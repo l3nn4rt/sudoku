@@ -41,8 +41,8 @@ class Sudoku:
 
     def options(self, i, j):
         '''Candidates for cell `(i, j)`.'''
-        return [n for n in range(1, 10) if not n in \
-                self.row(i) + self.col(j) + self.block(i, j)]
+        used = set(self.row(i) + self.col(j) + self.block(i, j))
+        return [n for n in range(1, 10) if n not in used]
 
     def empty(self):
         '''Generator of empty cells coordinates.'''
